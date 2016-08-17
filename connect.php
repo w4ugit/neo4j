@@ -1,3 +1,4 @@
+<pre>
 <?php
 require('vendor/autoload.php');
 
