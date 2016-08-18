@@ -51,9 +51,9 @@ switch ($_REQUEST['action']){
         break;
 
     case 'update_node':
-        $character=$client->getNode(416);
+        $character=$client->getNode($_REQUEST['id']);
         $character->removeProperty('text')
-            ->setProperty('text', 'Sr2')
+            ->setProperty('text', $_REQUEST['new_text'])
             ->save();
         break;
 }
