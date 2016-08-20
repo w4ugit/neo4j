@@ -87,25 +87,11 @@ switch ($_POST['flag']) {
             $id = $row['x']->getId();
             $item = $client->getNode($id);
             $color = $item->getProperty('type');
-            $rel = $item->getRelationships();
-            foreach ($rel as $q) {
-                $x = $q->getStartNode()->getId();
-                $y = $q->getEndNode()->getId();
-                if ($x == $id) {
-                    $tar = $client->getNode($y);
-                    $color_2 = $tar->getProperty('type');
-                    $name_2 = $tar->getProperty('text');
-                    if ($color == $color_2) {
-                        $arr[] = $name_2;
-                    }
-                } else {
-                    $tar = $client->getNode($x);
-                    $color_2 = $tar->getProperty('type');
-                    $name_2 = $tar->getProperty('text');
-                    if ($color == $color_2) {
-                        $arr[] = $name_2;
-                    }
-                }
+            $queryString2 = 'MATCH (n) WHERE n.type = "' . $color . '" RETURN n';
+            $query2 = new Everyman\Neo4j\Cypher\Query($client, $queryString2);
+            $result2 = $query2->getResultSet();
+            foreach ($result2 as $row2){
+                $arr[]=$row2['x']->getProperty('text');
             }
         }
 

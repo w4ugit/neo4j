@@ -14,7 +14,7 @@
     <input type="text" name="node">
     <button id="search">Search</button>
 </div>
-<canvas id="viewport" width="800" height="600"></canvas>
+<canvas id="viewport" width="800" height="400"></canvas>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 

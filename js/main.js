@@ -76,7 +76,7 @@
 				type: 'post',
 				data: {flag: 'search', node: node},
 				success: function (res) {
-					console.log(res);
+					alert("Результат: "+res);
 				}
 			})
 	});
