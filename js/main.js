@@ -47,7 +47,7 @@
 		return that;
 	}    
 
-	$(document).ready(function(){
+	$("#go").click(function () {
 		sys = arbor.ParticleSystem(1000); // создаём систему
 		sys.parameters(); // гравитация вкл
 		sys.renderer = Renderer("#viewport") //начинаем рисовать в выбраной области
@@ -66,8 +66,19 @@
 					sys.addEdge(sys.getNode(edge.src),sys.getNode(edge.dest));	//добавляем грань
 				});
 			}
-		})
-    
-	})
+		});
+	});
+
+	$("#search").click(function () {
+		var node=$("input[name=node]").val();
+			$.ajax({
+				url: '/ajax.php',
+				type: 'post',
+				data: {flag: 'search', node: node},
+				success: function (res) {
+					console.log(res);
+				}
+			})
+	});
 
 })(this.jQuery)
